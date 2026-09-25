@@ -1,6 +1,6 @@
 ﻿namespace VideoDownloaderDesktop;
 
-partial class frmApp
+partial class DownloaderForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -38,6 +38,8 @@ partial class frmApp
         btnDownload = new Button();
         lblBrowser = new Label();
         cboBrowser = new ComboBox();
+        lblResolution = new Label();
+        cboResolution = new ComboBox();
         lblCookieStatus = new Label();
         lblQueue = new Label();
         gridDownloads = new DataGridView();
@@ -152,10 +154,19 @@ partial class frmApp
         cboBrowser.Size = new Size(179, 23);
         cboBrowser.TabIndex = 9;
         cboBrowser.SelectedIndexChanged += cboBrowser_SelectedIndexChanged;
+        lblResolution.AutoSize = true;
+        lblResolution.Location = new Point(342, 179);
+        lblResolution.Name = "lblResolution";
+        lblResolution.Size = new Size(65, 15);
+        lblResolution.TabIndex = 10;
+        lblResolution.Text = "Resolução:";
+        cboResolution.DropDownStyle = ComboBoxStyle.DropDownList;
+        cboResolution.FormattingEnabled = true;
+        cboResolution.Location = new Point(417, 176);
+        cboResolution.Name = "cboResolution";
+        cboResolution.Size = new Size(120, 23);
+        cboResolution.TabIndex = 11;
         // 
-        //
-        // (resolution control removed)
-        //
         // 
         // lblCookieStatus
         // 
@@ -165,7 +176,7 @@ partial class frmApp
         lblCookieStatus.Location = new Point(12, 205);
         lblCookieStatus.Name = "lblCookieStatus";
         lblCookieStatus.Size = new Size(757, 15);
-        lblCookieStatus.TabIndex = 11;
+        lblCookieStatus.TabIndex = 12;
         lblCookieStatus.Text = "Arquivos de cookies";
         // 
         // lblQueue
@@ -174,7 +185,7 @@ partial class frmApp
         lblQueue.Location = new Point(12, 228);
         lblQueue.Name = "lblQueue";
         lblQueue.Size = new Size(105, 15);
-        lblQueue.TabIndex = 12;
+        lblQueue.TabIndex = 13;
         lblQueue.Text = "Fila de downloads:";
         // 
         // gridDownloads
@@ -195,7 +206,7 @@ partial class frmApp
         gridDownloads.RowTemplate.Height = 28;
         gridDownloads.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         gridDownloads.Size = new Size(757, 130);
-        gridDownloads.TabIndex = 13;
+        gridDownloads.TabIndex = 14;
         gridDownloads.CellContentClick += gridDownloads_CellContentClick;
         gridDownloads.CellFormatting += gridDownloads_CellFormatting;
         // 
@@ -241,7 +252,7 @@ partial class frmApp
         txtLog.ReadOnly = true;
         txtLog.ScrollBars = ScrollBars.Both;
         txtLog.Size = new Size(757, 150);
-        txtLog.TabIndex = 14;
+        txtLog.TabIndex = 15;
         txtLog.WordWrap = false;
         // 
         // statusStrip
@@ -272,9 +283,6 @@ partial class frmApp
         statusLabelDeveloper.Name = "statusLabelDeveloper";
         statusLabelDeveloper.Size = new Size(118, 17);
         statusLabelDeveloper.Text = "desenvolvido por jroi";
-        // 
-        // frmApp
-        // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(781, 563);
@@ -283,6 +291,8 @@ partial class frmApp
         Controls.Add(gridDownloads);
         Controls.Add(lblQueue);
         Controls.Add(lblCookieStatus);
+        Controls.Add(cboResolution);
+        Controls.Add(lblResolution);
         Controls.Add(cboBrowser);
         Controls.Add(lblBrowser);
         Controls.Add(btnDownload);
@@ -296,7 +306,7 @@ partial class frmApp
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox = false;
         MinimumSize = new Size(796, 602);
-        Name = "frmApp";
+        Name = "DownloaderForm";
         ShowIcon = false;
         SizeGripStyle = SizeGripStyle.Hide;
         StartPosition = FormStartPosition.CenterScreen;
@@ -317,6 +327,8 @@ partial class frmApp
     private Button btnDownload;
     private Label lblBrowser;
     private ComboBox cboBrowser;
+    private Label lblResolution;
+    private ComboBox cboResolution;
     private Label lblCookieStatus;
     private Label lblQueue;
     private DataGridView gridDownloads;

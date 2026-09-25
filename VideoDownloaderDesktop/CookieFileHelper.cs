@@ -44,58 +44,6 @@ internal static class CookieFileHelper
             || output.Contains("403: Forbidden", StringComparison.OrdinalIgnoreCase);
     }
 
-    public static bool HasInstagramSession(string cookiesFilePath)
-    {
-        return TryFindCookieValue(cookiesFilePath, "instagram.com", "sessionid", out var sessionId)
-            && !string.IsNullOrWhiteSpace(sessionId);
-    }
-
-    public static string CreateFilteredCookiesFile(string sourceCookiesPath, string siteHost)
-    {
-        var lines = File.ReadAllLines(sourceCookiesPath);
-        var selected = new List<string>
-        {
-            "# Netscape HTTP Cookie File",
-            "# Filtered by Social Video Downloader"
-        };
-
-        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-        foreach (var line in lines)
-        {
-            if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#'))
-            {
-                continue;
-            }
-
-            var parts = line.Split('\t');
-            if (parts.Length < 7)
-            {
-                continue;
-            }
-
-            var domain = parts[0].Trim();
-            var name = parts[5].Trim();
-            if (!domain.Contains(siteHost, StringComparison.OrdinalIgnoreCase))
-            {
-                continue;
-            }
-
-            // Prefer cookies importantes; inclui o restante do domínio para manter sessão completa.
-            var key = $"{domain}|{parts[2]}|{name}";
-            if (!seen.Add(key))
-            {
-                continue;
-            }
-
-            selected.Add(line);
-        }
-
-        var tempPath = Path.Combine(Path.GetTempPath(), $"svd-{siteHost.Replace('.', '-')}-cookies.txt");
-        File.WriteAllLines(tempPath, selected);
-        return tempPath;
-    }
-
     public static string DescribeInstagramCookies(string cookiesFilePath)
     {
         if (!File.Exists(cookiesFilePath))

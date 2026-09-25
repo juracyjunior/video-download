@@ -15,7 +15,6 @@ internal static class BrowserCookieHelper
             }
             catch
             {
-                // Ignora processos inacessíveis.
             }
             finally
             {
@@ -41,7 +40,6 @@ internal static class BrowserCookieHelper
             }
             catch
             {
-                // Ignora processos inacessíveis.
             }
             finally
             {

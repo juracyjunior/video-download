@@ -14,6 +14,10 @@ internal sealed class DownloadQueueItem
     public string Url { get; set; } = string.Empty;
     public string OutputFolder { get; set; } = string.Empty;
     public string Browser { get; set; } = "chrome";
+    public int RequestedHeight { get; set; }
+    public int? SelectedHeight { get; set; }
+    public string? SelectedFormatSelector { get; set; }
+    public string? SelectedFormatId { get; set; }
     public DownloadItemStatus Status { get; set; } = DownloadItemStatus.Pending;
     public string? ErrorMessage { get; set; }
 
